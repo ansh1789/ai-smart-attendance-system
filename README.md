@@ -4,13 +4,23 @@ An AI-based smart attendance monitoring system designed to automate student atte
 
 ## 📌 About the Project
 
-The AI-Based Smart Attendance Monitoring System is a full-stack web application that helps educational institutions manage student attendance efficiently.
+The **AI-Based Smart Attendance Monitoring System** is a full-stack web application designed to help educational institutions manage student attendance efficiently.
 
-The system provides separate dashboards for Admin, Teacher, and Student users. It includes attendance management, analytics, face registration, AI-assisted attendance, and attendance reports.
+The system provides separate dashboards for:
+
+- 👨‍💼 Admin
+- 👨‍🏫 Teacher
+- 👨‍🎓 Student
+
+It includes attendance management, analytics, face registration, AI-assisted attendance, notifications, and attendance reports.
+
+---
 
 ## ✨ Features
 
 ### 👨‍💼 Admin
+
+- Admin login
 - Manage students
 - Manage teachers
 - Manage subjects
@@ -18,49 +28,63 @@ The system provides separate dashboards for Admin, Teacher, and Student users. I
 - View attendance analytics
 - Generate attendance reports
 - Manage notifications
-- Dashboard with attendance statistics
+- View dashboard statistics
 
 ### 👨‍🏫 Teacher
+
 - Teacher login
 - View assigned subjects
 - Start attendance sessions
 - AI-assisted attendance
 - View attendance history
 - View attendance analytics
-- Generate reports
+- Generate attendance reports
 - Monitor low-attendance students
 
 ### 👨‍🎓 Student
+
 - Student login
-- View attendance percentage
+- View personal attendance
 - View subject-wise attendance
 - View attendance history
+- View attendance percentage
 - Register face
 - View notifications
 - Manage profile
 
-## 🧠 AI Attendance System
+---
 
-The system provides an AI-based attendance workflow:
+## 🧠 AI Attendance Workflow
 
-```text
-Student
-   ↓
-Camera
-   ↓
-Face Detection
-   ↓
-Face Recognition / Verification
-   ↓
-Student Identification
-   ↓
-Attendance Validation
-   ↓
-Attendance Database
-   ↓
-Analytics
+The system provides an AI-assisted attendance workflow:
+
+**Student → Camera → Face Detection → Face Recognition/Verification → Student Identification → Attendance Validation → Database → Analytics**
 
 The current AI service contains a prototype/demo recognition pipeline and can be extended with a production-grade face recognition model.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │     React Client    │
+                    │      Port 5173      │
+                    └──────────┬──────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌─────────────────────┐
+                    │  Node.js + Express  │
+                    │      Port 5000      │
+                    └───────┬───────┬─────┘
+                            │       │
+                            ▼       ▼
+                    ┌──────────┐  ┌──────────────┐
+                    │ MongoDB  │  │ Python AI    │
+                    │ Database │  │ FastAPI      │
+                    └──────────┘  │ Port 8000    │
+                                  └──────────────┘
 
 🛠️ Technologies Used
 Frontend
@@ -68,26 +92,26 @@ React.js
 Vite
 JavaScript
 CSS
-Axios
 React Router
+Axios
 Backend
 Node.js
 Express.js
 MongoDB
 Mongoose
-JWT
+JWT Authentication
 bcrypt
 AI Service
 Python
 FastAPI
 OpenCV
 Face recognition workflow
-Tools
+Development Tools
 Git
 GitHub
 VS Code
 Postman
-🏗️ Project Structure
+📂 Project Structure
 AI based project/
 │
 ├── ai-service/
@@ -111,6 +135,7 @@ AI based project/
 │
 ├── .gitignore
 └── README.md
+
 ⚙️ Requirements
 
 Before running the project, install:
@@ -118,31 +143,29 @@ Before running the project, install:
 Node.js
 npm
 Python 3.x
-MongoDB / MongoDB Atlas
+MongoDB or MongoDB Atlas
 Git
-
-Check your installation:
-
+Check the installations:
 node --version
 npm --version
 python --version
 git --version
 🚀 Installation
-1. Clone the repository
+1. Clone the Repository
 git clone https://github.com/ansh1789/ai-smart-attendance-system.git
 cd ai-smart-attendance-system
-2. Install frontend dependencies
+2. Install Frontend Dependencies
 cd client
 npm install
-3. Install backend dependencies
+3. Install Backend Dependencies
 cd ../server
 npm install
-4. Install AI service dependencies
+4. Install AI Service Dependencies
 cd ../ai-service
 pip install -r requirements.txt
 🔐 Environment Variables
 
-Create a .env file inside the server folder.
+Create a .env file inside the server directory.
 
 Example:
 
@@ -151,85 +174,87 @@ MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 AI_SERVICE_URL=http://localhost:8000
 
-Do not upload your actual .env file to GitHub.
+Important: Never upload your actual .env file, passwords, API keys, or database credentials to GitHub.
 
 ▶️ Running the Project
 
-The project contains three services.
+The project consists of three services.
 
-Backend
+1. Backend
 
-Open Terminal 1:
+Open a terminal:
 
 cd server
 npm run dev
 
-Backend will run on:
+Backend:
 
 http://localhost:5000
-Frontend
+2. Frontend
 
-Open Terminal 2:
+Open another terminal:
 
 cd client
 npm run dev
 
-Frontend will normally run on:
+Frontend:
 
 http://localhost:5173
-AI Service
+3. AI Service
 
-Open Terminal 3:
+Open a third terminal:
 
 cd ai-service
 python -m uvicorn main:app --reload --port 8000
 
-AI service will run on:
+AI service:
 
 http://localhost:8000
 📊 Attendance Analytics
 
-The system provides:
+The system provides attendance analytics such as:
 
 Overall attendance percentage
 Subject-wise attendance
 Student-wise attendance
-Present/absent statistics
+Present vs absent statistics
 Attendance history
 Low-attendance monitoring
 Attendance trends
 🔒 Security
 
-The application uses:
+The application uses or is designed to support:
 
 JWT authentication
 Password hashing
-Protected routes
+Protected API routes
 Role-based authorization
 Environment variables
 Duplicate attendance prevention
+Input validation
+Error handling
 
-Sensitive credentials should never be uploaded to GitHub.
+Sensitive credentials should never be committed to the public repository.
 
 🔮 Future Improvements
-Real-time production-grade face recognition
+Production-grade real-time face recognition
 Liveness detection
 Anti-spoofing
-QR-based attendance
+QR-code attendance
 Email notifications
 Cloud deployment
 Mobile application
 Advanced attendance analytics
-Improved AI-based insights
+Improved AI-based attendance insights
 ⚠️ Project Status
 
 This project is currently a development/academic prototype.
 
-The AI attendance component currently contains a prototype/demo recognition pipeline and can be further enhanced with a properly validated face-recognition and liveness-detection solution for production use.
+The AI attendance component currently contains a prototype/demo recognition pipeline. It can be further enhanced with a properly validated face-recognition and liveness-detection solution before production deployment.
 
 🎓 Academic Project
 
-This project demonstrates:
+This project demonstrates concepts related to:
 
 Full-stack web development
 REST API development
@@ -237,7 +262,7 @@ Database management
 Authentication and authorization
 Artificial Intelligence
 Computer Vision
-Face recognition concepts
+Face recognition
 Data analytics
 👨‍💻 Author
 
@@ -248,3 +273,8 @@ https://github.com/ansh1789
 
 Project Repository:
 https://github.com/ansh1789/ai-smart-attendance-system
+
+📄 License
+
+This project is intended primarily for educational and academic purposes.
+                                 
